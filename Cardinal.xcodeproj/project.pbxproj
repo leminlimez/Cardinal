@@ -33,6 +33,7 @@
 		6FE6D26C2AA0FF59002CFD2F /* vnode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE6D25C2AA0FF59002CFD2F /* vnode.m */; };
 		6FE6D26D2AA0FF59002CFD2F /* proc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6FE6D25D2AA0FF59002CFD2F /* proc.c */; };
 		6FE6D2702AA10411002CFD2F /* entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FE6D26F2AA10411002CFD2F /* entitlements.plist */; };
+		6FE6D2732AA11B73002CFD2F /* ADD_YOUR_OWN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6FE6D2722AA11B73002CFD2F /* ADD_YOUR_OWN.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +84,7 @@
 		6FE6D2402AA0FF59002CFD2F /* kwrite_sem_open.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kwrite_sem_open.h; sourceTree = "<group>"; };
 		6FE6D2412AA0FF59002CFD2F /* kwrite_dup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kwrite_dup.h; sourceTree = "<group>"; };
 		6FE6D2432AA0FF59002CFD2F /* static_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = static_info.h; sourceTree = "<group>"; };
-		6FE6D2442AA0FF59002CFD2F /* dynamic_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dynamic_info.h; sourceTree = "<group>"; };
+		6FE6D2442AA0FF59002CFD2F /* OLD_dynamic_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLD_dynamic_info.h; sourceTree = "<group>"; };
 		6FE6D2452AA0FF59002CFD2F /* puaf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = puaf.h; sourceTree = "<group>"; };
 		6FE6D2462AA0FF59002CFD2F /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		6FE6D2482AA0FF59002CFD2F /* smith.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smith.h; sourceTree = "<group>"; };
@@ -114,6 +115,8 @@
 		6FE6D2622AA0FF59002CFD2F /* libkfd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libkfd.h; sourceTree = "<group>"; };
 		6FE6D26E2AA0FF98002CFD2F /* Cardinal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cardinal-Bridging-Header.h"; sourceTree = "<group>"; };
 		6FE6D26F2AA10411002CFD2F /* entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = entitlements.plist; sourceTree = "<group>"; };
+		6FE6D2712AA11B40002CFD2F /* dynamic_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dynamic_info.h; sourceTree = "<group>"; };
+		6FE6D2722AA11B73002CFD2F /* ADD_YOUR_OWN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ADD_YOUR_OWN.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,7 +295,9 @@
 			isa = PBXGroup;
 			children = (
 				6FE6D2432AA0FF59002CFD2F /* static_info.h */,
-				6FE6D2442AA0FF59002CFD2F /* dynamic_info.h */,
+				6FE6D2712AA11B40002CFD2F /* dynamic_info.h */,
+				6FE6D2722AA11B73002CFD2F /* ADD_YOUR_OWN.txt */,
+				6FE6D2442AA0FF59002CFD2F /* OLD_dynamic_info.h */,
 			);
 			path = info;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FE6D2732AA11B73002CFD2F /* ADD_YOUR_OWN.txt in Resources */,
 				6FE6D2702AA10411002CFD2F /* entitlements.plist in Resources */,
 				6FE6D2082AA040A5002CFD2F /* Preview Assets.xcassets in Resources */,
 				6FE6D2052AA040A5002CFD2F /* Assets.xcassets in Resources */,
@@ -615,7 +621,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.leminlimez.Cardinal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -647,7 +653,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.leminlimez.Cardinal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
