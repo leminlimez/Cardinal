@@ -36,22 +36,16 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("ID Changer")
+                Text("Cardinal")
                     .font(.largeTitle)
                     .bold()
                 Spacer()
-                Button(action: {
-                    UIApplication.shared.alert(title: "Default Image Sizes", body: "- Logo: 858x150\n- Strip: 1146x333\n- Thumbnail: 300x400?\n\nThese image sizes are not required, the card should automatically crop them.\n\nDevice will respring after applying/resetting.")
-                }) {
-                    Image(systemName: "info.circle")
-                        .font(.title3)
-                }
             }
             .padding(.bottom, 10)
             
             HStack {
                 Spacer()
-                Text("Tap on an image or text field to change it.")
+                Text("Tap on an image to change it.")
                     .font(.headline)
                 Spacer()
             }
