@@ -80,10 +80,10 @@ class MainCardController {
             
             for pass in passes {
                 var vnode: UInt64 = 0
-//                if #available(iOS 16.2, *) {
-//                    // kfd need to redirect
-//                    vnode = redirectCardFolder(pass + "/")
-//                }
+                if #available(iOS 16.2, *) {
+                    // kfd need to redirect
+                    vnode = redirectCardFolder(pass + "/")
+                }
                 let files = try fm.contentsOfDirectory(atPath: fullPath + "/" + pass)
                 
                 if (files.contains("cardBackgroundCombined@2x.png"))
@@ -91,12 +91,11 @@ class MainCardController {
                     data.append(.init(cardPath: pass, vnodeOrig: vnode, imagePath: "cardBackgroundCombined@2x.png", changingImage: false, newImage: UIImage()))
                 } else if (files.contains("cardBackgroundCombined-watch@2x.png")) {
                     data.append(.init(cardPath: pass, vnodeOrig: vnode, imagePath: "cardBackgroundCombined-watch@2x.png", changingImage: false, newImage: UIImage()))
+                } else {
+                    if #available(iOS 16.2, *) {
+                        UnRedirectAndRemoveFolder(vnode, path + pass)
+                    }
                 }
-//                else {
-//                    if #available(iOS 16.2, *) {
-//                        UnRedirectAndRemoveFolder(vnode, path + pass)
-//                    }
-//                }
             }
             print(data)
             return data
@@ -129,7 +128,7 @@ class MainCardController {
                 if #available(iOS 16.2, *) {
                     // kfd fallback
                     try? fm.removeItem(atPath: "\(fullPath)/Cards/" + card.cardPath.replacingOccurrences(of: "pkpass", with: "cache"))
-//                    UnRedirectAndRemoveFolder(card.vnodeOrig, fullPath + "/\(card.cardPath)/")
+                    UnRedirectAndRemoveFolder(card.vnodeOrig, fullPath + "/\(card.cardPath)/")
                 } else {
                     // do not force delete in case it is already not there
                     try? fm.removeItem(atPath: "\(fullPath)/" + card.cardPath.replacingOccurrences(of: "pkpass", with: "cache"))
@@ -138,10 +137,10 @@ class MainCardController {
         }
         
         // for kfd, kclose
-//        if #available(iOS 16.2, *) {
-//            UnRedirectAndRemoveFolder(vnodeOrig, fullPath + "/Cards/");
-//            do_kclose(kfd)
-//        }
+        if #available(iOS 16.2, *) {
+            UnRedirectAndRemoveFolder(vnodeOrig, fullPath + "/Cards/");
+            do_kclose(kfd)
+        }
         
         // respring to apply changes
         respring()
@@ -162,10 +161,10 @@ class MainCardController {
         }
         
         // for kfd, kclose
-//        if #available(iOS 16.2, *) {
-//            UnRedirectAndRemoveFolder(vnodeOrig, fullPath);
-//            do_kclose(kfd)
-//        }
+        if #available(iOS 16.2, *) {
+            UnRedirectAndRemoveFolder(vnodeOrig, fullPath);
+            do_kclose(kfd)
+        }
         
         // respring to apply changes
         respring()
@@ -181,12 +180,12 @@ class MainCardController {
                 
                 let path = "\(fullPath)/\(card.cardPath)/\(card.imagePath)"
                 
-//                if #available(iOS 16.2, *) {
-//                    // use kfd method
-//                    kfdOverwriteImage(filePath: path, image: data)
-//                    usleep(500)
-//                    return
-//                }
+                if #available(iOS 16.2, *) {
+                    // use kfd method
+                    kfdOverwriteImage(filePath: path, image: data)
+                    usleep(500)
+                    return
+                }
                 
                 if !fm.fileExists(atPath: path + ".backup") {
                     try fm.moveItem(atPath: path, toPath: path + ".backup")
@@ -195,6 +194,20 @@ class MainCardController {
             } catch {
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    static func kfdOverwriteImage(filePath: String, image: Data) {
+        do {
+            let imgPath = NSHomeDirectory() + "/Documents/temp.png"
+            if FileManager.default.fileExists(atPath: imgPath) {
+                try? FileManager.default.removeItem(atPath: imgPath)
+            }
+            try image.write(to: URL(fileURLWithPath: imgPath))
+            
+            overwritePath(filePath, imgPath)
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
