@@ -102,7 +102,7 @@ struct ContentView: View {
         .padding()
         .onAppear {
             if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" {
-                if #available(iOS 16.6.1, *) {
+                if #available(iOS 16.5.1, *), !ProcessInfo.processInfo.operatingSystemVersionString.contains("20G5026e") {
                     UIApplication.shared.alert(title: "Device Not Supported", body: "Your device is not supported by the MDC or KFD exploits, the app will not function, sorry.")
                 } else if #available(iOS 16.2, *) {
                     // kfd stuff
