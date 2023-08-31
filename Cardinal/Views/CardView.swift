@@ -34,7 +34,6 @@ struct CardView: View {
             .onChange(of: self.card.newImage) { newImage in
                 card.changingImage = true
                 changedSomething = true
-//                MainCardController.setChanges(kfd, vnodeOrig: vnodeOrig, cardID: cardPath, fullPath: fullPath, newImage: newImage)
             }
             
             if fm.fileExists(atPath: "\(fullPath)/\(card.cardPath)/\(card.imagePath).backup") {

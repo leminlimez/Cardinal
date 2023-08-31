@@ -67,14 +67,6 @@ struct ContentView: View {
                     .foregroundColor(.red)
             }
             
-            // Card View
-//            if cardPath == "" {
-//                Text("Error! Card not found!")
-//                    .foregroundColor(.red)
-//            } else {
-//                CardView(kfd: kfd, vnodeOrig: vnodeOrig, cardPath: cardPath, fullPath: fullPath)
-//            }
-            
             Spacer()
             
             HStack {
@@ -96,62 +88,62 @@ struct ContentView: View {
                 .disabled(!changedSomething)
             }
             
-//            if #available(iOS 16.2, *) {
-//                Button(action: {
-//                    UnRedirectAndRemoveFolder(vnodeOrig, fullPath + "/Cards/")
-//                    do_kclose(kfd)
-//
-//                    respring()
-//                }) {
-//                    Text("kclose")
-//                }
-//            }
+            if #available(iOS 16.2, *) {
+                Button(action: {
+                    UnRedirectAndRemoveFolder(vnodeOrig, fullPath + "/Cards/")
+                    do_kclose(kfd)
+
+                    respring()
+                }) {
+                    Text("kclose")
+                }
+            }
         }
         .padding()
         .onAppear {
             if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" {
                 if #available(iOS 16.5.1, *) {
                     UIApplication.shared.alert(title: "Device Not Supported", body: "Your device is not supported by the MDC or KFD exploits, the app will not function, sorry.")
-//                } else if #available(iOS 16.2, *) {
-//                    // kfd stuff
-//                    UIApplication.shared.confirmAlert(title: "kopen needed", body: "The kernel needs to be opened in order for the app to work. Would you like to do that?\n\nNote: Your device may panic (auto reboot) after applying, this will only happen once and is not permanent.", onOK: {
-//                        // kopen
-//                        UIApplication.shared.alert(title: "Opening Kernel...", body: "Please wait...", withButton: false)
-//
-//                        puaf_pages = puaf_pages_options[puaf_pages_index]
-//                        kfd = do_kopen(UInt64(puaf_pages), UInt64(puaf_method), UInt64(kread_method), UInt64(kwrite_method))
-//
-//                        // clear previous
-//                        MainCardController.rmMountedDir()
-//
-//                        if !FileManager.default.fileExists(atPath: NSHomeDirectory() + "/Documents/mounted") {
-//                            do {
-//                                try FileManager.default.createDirectory(atPath: NSHomeDirectory() + "/Documents/mounted", withIntermediateDirectories: false)
-//                            } catch {
-//                                print(error.localizedDescription)
-//                            }
-//                        }
-//
-//                        if !FileManager.default.fileExists(atPath: NSHomeDirectory() + "/Documents/mounted/Cards") {
-//                            do {
-//                                try FileManager.default.createDirectory(atPath: NSHomeDirectory() + "/Documents/mounted/Cards", withIntermediateDirectories: false)
-//                            } catch {
-//                                print(error.localizedDescription)
-//                            }
-//                        }
-//
-//                        // init fun offsets
-//                        _offsets_init()
-//
-//                        // redirect
-//                        fullPath = NSHomeDirectory() + "/Documents/mounted"
-//
-//                        vnodeOrig = redirectCardsFolder()
-//
-//                        getCards()
-//
-//                        UIApplication.shared.dismissAlert(animated: true)
-//                    }, noCancel: false)
+                } else if #available(iOS 16.2, *) {
+                    // kfd stuff
+                    UIApplication.shared.confirmAlert(title: "kopen needed", body: "The kernel needs to be opened in order for the app to work. Would you like to do that?\n\nNote: Your device may panic (auto reboot) after applying, this will only happen once and is not permanent.", onOK: {
+                        // kopen
+                        UIApplication.shared.alert(title: "Opening Kernel...", body: "Please wait...", withButton: false)
+
+                        puaf_pages = puaf_pages_options[puaf_pages_index]
+                        kfd = do_kopen(UInt64(puaf_pages), UInt64(puaf_method), UInt64(kread_method), UInt64(kwrite_method))
+
+                        // clear previous
+                        MainCardController.rmMountedDir()
+
+                        if !FileManager.default.fileExists(atPath: NSHomeDirectory() + "/Documents/mounted") {
+                            do {
+                                try FileManager.default.createDirectory(atPath: NSHomeDirectory() + "/Documents/mounted", withIntermediateDirectories: false)
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+
+                        if !FileManager.default.fileExists(atPath: NSHomeDirectory() + "/Documents/mounted/Cards") {
+                            do {
+                                try FileManager.default.createDirectory(atPath: NSHomeDirectory() + "/Documents/mounted/Cards", withIntermediateDirectories: false)
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+
+                        // init fun offsets
+                        _offsets_init()
+
+                        // redirect
+                        fullPath = NSHomeDirectory() + "/Documents/mounted"
+
+                        vnodeOrig = redirectCardsFolder()
+
+                        getCards()
+
+                        UIApplication.shared.dismissAlert(animated: true)
+                    }, noCancel: false)
                 } else {
                     // mdc/trollstore stuff
                     do {
