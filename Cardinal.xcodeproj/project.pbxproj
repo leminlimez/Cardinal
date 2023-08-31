@@ -32,6 +32,7 @@
 		6FE6D26A2AA0FF59002CFD2F /* offsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE6D25A2AA0FF59002CFD2F /* offsets.m */; };
 		6FE6D26C2AA0FF59002CFD2F /* vnode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE6D25C2AA0FF59002CFD2F /* vnode.m */; };
 		6FE6D26D2AA0FF59002CFD2F /* proc.c in Sources */ = {isa = PBXBuildFile; fileRef = 6FE6D25D2AA0FF59002CFD2F /* proc.c */; };
+		6FE6D2702AA10411002CFD2F /* entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FE6D26F2AA10411002CFD2F /* entitlements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		6FE6D2612AA0FF59002CFD2F /* grant_full_disk_access.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grant_full_disk_access.h; sourceTree = "<group>"; };
 		6FE6D2622AA0FF59002CFD2F /* libkfd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libkfd.h; sourceTree = "<group>"; };
 		6FE6D26E2AA0FF98002CFD2F /* Cardinal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cardinal-Bridging-Header.h"; sourceTree = "<group>"; };
+		6FE6D26F2AA10411002CFD2F /* entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = entitlements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		6FE6D1F42AA040A4002CFD2F = {
 			isa = PBXGroup;
 			children = (
+				6FE6D26F2AA10411002CFD2F /* entitlements.plist */,
 				6FE6D1FF2AA040A4002CFD2F /* Cardinal */,
 				6FE6D2132AA040E3002CFD2F /* MacDirtyCowSwift */,
 				6FE6D1FE2AA040A4002CFD2F /* Products */,
@@ -417,6 +420,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FE6D2702AA10411002CFD2F /* entitlements.plist in Resources */,
 				6FE6D2082AA040A5002CFD2F /* Preview Assets.xcassets in Resources */,
 				6FE6D2052AA040A5002CFD2F /* Assets.xcassets in Resources */,
 			);
