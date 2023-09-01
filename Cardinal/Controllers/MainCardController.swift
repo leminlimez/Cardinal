@@ -51,6 +51,12 @@ func respring() {
 class MainCardController {
     // Code adapted from Cowabunga
     
+    private static let cardTypes: [String] = [
+        "cardBackground@2x.png",
+        "cardBackgroundCombined@2x.png",
+        "cardBackgroundCombined-watch@2x.png"
+    ]
+    
     // MARK: General Card Methods
     
     static func rmMountedDir() {
@@ -86,15 +92,18 @@ class MainCardController {
                 }
                 let files = try fm.contentsOfDirectory(atPath: fullPath + "/" + pass)
                 
-                if (files.contains("cardBackgroundCombined@2x.png"))
-                {
-                    data.append(.init(cardPath: pass, vnodeOrig: vnode, imagePath: "cardBackgroundCombined@2x.png", changingImage: false, newImage: UIImage()))
-                } else if (files.contains("cardBackgroundCombined-watch@2x.png")) {
-                    data.append(.init(cardPath: pass, vnodeOrig: vnode, imagePath: "cardBackgroundCombined-watch@2x.png", changingImage: false, newImage: UIImage()))
-                } else {
-                    if #available(iOS 16.2, *) {
-                        UnRedirectAndRemoveFolder(vnode, path + pass)
+                var added = false
+                
+                for cardType in cardTypes {
+                    if files.contains(cardType) {
+                        data.append(.init(cardPath: pass, vnodeOrig: vnode, imagePath: cardType, changingImage: false, newImage: UIImage()))
+                        added = true
+                        break
                     }
+                }
+                
+                if !added, #available(iOS 16.2, *) {
+                    UnRedirectAndRemoveFolder(vnode, path + pass)
                 }
             }
             print(data)
